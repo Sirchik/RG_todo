@@ -5,10 +5,32 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
+
+<header class="navbar">
+  <div class="navbar-inner">
+  
+      <ul class="nav navbar-nav pull-right">
+        <% if user_signed_in? %>
+
+          <li><%= link_to "Личный кабинет", edit_user_registration_path %></li>
+
+          <li><%= link_to "Выйти", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Зарегистрироваться", new_user_registration_path %></li>          
+          <li><%= link_to "Войти", new_user_session_path %></li>
+        <% end %>
+      </ul>
+
+  </div>
+</header>
+
+
 <body>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>
