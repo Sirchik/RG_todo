@@ -2,28 +2,25 @@
 <p class="alert"><%= alert %></p>
 <% @todo_lists.each do |todo_list| %>
   <% # byebug %>
-  <div class="container"  id=<%= 'todo_list_' + todo_list.id.to_s %>>
+  <div class="container" >
     <!-- <div class="index_row clearfix"> -->
       <!-- <h2 class="todo_list_title"> -->
         <table class="todo_list_title_table">
           <tr>
             <td>
-              <i class='fa fa-calendar' id='prj_icon'></i>
+              <i class='fa fa-calendar'></i>
             </td>
-            <td class="td_title">
-              <% #link_to todo_list.title, '', :id => 'todo_list_' + todo_list.id.to_s, :remote => true %>
-              <%= form_for(todo_list, remote: true) do |f| %>
-                <%= f.label "#{todo_list.title}", :id => 'todo_list_' + todo_list.id.to_s %><br>
+            <td class="td_title" id=<%= 'todo_list_' + todo_list.id.to_s %> >
+              <%= form_for(todo_list) do |f| %>
+                <%= f.label "#{todo_list.title}" %>
                 <%= f.text_field :title %>
-                <% f.submit %>
               <% end %>
-
             </td>
             <td class="td_right">
               <%= link_to '', class: 'todo_list_edit' do %>
                 <i class='fa fa-pencil'></i>
               <% end %> | 
-              <%= link_to '#', data: { confirm: 'Are you sure?'} do %>
+              <%= link_to todo_list_path(todo_list), method: :delete, data: { confirm: 'Are you sure?'} do %>
                 <i class='fa fa-trash'></i>
               <% end %>
             </td>
@@ -42,7 +39,17 @@
 
 <% end %>
 
-<div class="links">
-  <%= link_to 'New Todo List', new_todo_list_path %>
+<div >
+<%= form_for([@todo_lists.build]) do |f|%>
+  <%= button_tag  do %>
+    <i class='fa fa-plus fa-2x' id='fa_plus'></i>
+  <% end %> 
+<% end %>
+  <% # 'Add TODO List', new_todo_list_path, id: :add_list do %>
+    <i class='fa fa-plus fa-2x' id='fa_plus'></i>
+  <% #end %> 
+<%= button_to "Add TODO List", todo_lists_path, id: "add_prj_btn",
+                method: :create, remote: true %>
+
 </div>
 

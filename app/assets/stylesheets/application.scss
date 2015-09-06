@@ -65,14 +65,17 @@ body {
 /*  -webkit-box-shadow: 0 0 4px 3px rgba(0,0,0,.3);
   box-shadow: 0 0 4px 4px rgba(0,0,0,.03);
 */  .todo_list_title_table {
-    td {
+/*    td {
       font: 18px Arial, Times, serif;
       color: white;
     }
-    width: 100%;
+*/    width: 100%;
     .td_right {
-      width: 20px;
       text-align: right;
+      color: $gray;
+      A {
+        text-decoration: none;
+      }
     };  
     padding: 10px;
     text-align: center;
@@ -81,7 +84,7 @@ body {
     /*text-transform: uppercase;*/
     color: white;
     margin: 0;
-    a {
+/*    a {
       text-decoration: none;
       color: white;
       transition: all .4s ease-in-out;
@@ -89,14 +92,15 @@ body {
         opacity: 0.4;
       }
     };
-    $blue-top: #5080BF;
+*/    $blue-top: #5080BF;
     $blue-bot: #33609B;
     background: -webkit-linear-gradient($blue-top, $blue-bot); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(r$blue-top, $blue-bot); /*For Opera 11.1 to 12.0*/
     background: -moz-linear-gradient($blue-top, $blue-bot); /* For Firefox 3.6 to 15 */
     background: linear-gradient($blue-top, $blue-bot); /* Standard syntax */
     .td_title {
-      width: auto;
+      cursor: pointer;
+      width: 80%;
       text-align: left;
   /*input {
       font: 18px Arial, Times, serif;
@@ -116,14 +120,9 @@ body {
         font-weight: 700;
         font-size: 2rem;
         border: none;
-        &:hover {
-          opacity: 0.4;
-        }
+        display: none;
       };
     };
-    #prj_icon {
-      color: black;
-    }
   };
   .todo_items_wrapper {
     .row {
@@ -168,17 +167,24 @@ body {
     }
     #form {
       background: #C3C3C3;
-      padding: 0 1%;
+      padding: 1%;
+      #fa_plus {
+        color: green;
+      }
+      button {
+        height: 40px;
+        border: none;
+        background: transparent;
+      }
       input[type="text"] {
-        width: 72%;
-        margin-right: 2%;
+        width: 77%;
         display: inline-block;
         outline: none;
         background: white;
         border: none;
         height: 40px;
         border-radius: 4px;
-        padding: 1em 2em;
+        padding: 0em 2em;
       }
       input[type="submit"] {
         background: green;
@@ -186,7 +192,8 @@ body {
         border: none;
         height: 40px;
         border-radius: 0 4px 4px 0;
-        width: 25%;
+        width: 15%;
+        color: white;
 /*        display: inline-block;
         transition: all .4s ease-in-out;
 */        /*cursor: pointer;*/
@@ -194,10 +201,21 @@ body {
           background: $dark;
         }
 */      }
-      ::-webkit-input-placeholder { color: $dark; }
+      /*::-webkit-input-placeholder { color: $dark; }*/
     }
   }
 }
+
+#add_list {
+  background: green;
+  /*outline: none;*/
+  border: none;
+  height: 40px;
+  border-radius: 0 4px 4px 0;
+  width: 15%;
+  color: white;
+}
+
 
 /*.todo_list_title {
   text-align: center;

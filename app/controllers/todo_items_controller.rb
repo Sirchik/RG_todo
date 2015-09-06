@@ -4,7 +4,7 @@ class TodoItemsController < ApplicationController
 
   def create
     @todo_item = @todo_list.todo_items.create(todo_item_params)
-    redirect_to todo_lists_path
+    redirect_to root_url
   end
 
   def destroy
@@ -13,12 +13,12 @@ class TodoItemsController < ApplicationController
     else
       flash[:error] = 'Todo List item could not be deleted.'
     end
-    redirect_to todo_lists_path
+    redirect_to root_url
   end
 
   def complete
     @todo_item.update_attribute(:completed_at, Time.now)
-    redirect_to todo_lists_path, notice: 'Todo item completed'
+    redirect_to root_url, notice: 'Todo item completed'
   end
 
   private

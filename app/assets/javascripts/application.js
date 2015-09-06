@@ -28,14 +28,14 @@
 // });
 
 $(function() {
-  $('label[id^=todo_list_]').click(function () {
+  $('td[id^=todo_list_]').click(function () {
     $('#todo_list_1_items'.replace('1', $(this).attr('id').replace('todo_list_', ''))).toggle()
   })
   $('.todo_list_edit').click(function() {
     $(this).parents('tr').first().find('label').hide();
     $(this).parents('tr').first().find('#todo_list_title').show();
     $(this).parents('tr').first().find('#todo_list_title').focus();
-    
+
     $(this).parents('tr').first().find('#todo_list_title').click(function(){
       return false;
     });
