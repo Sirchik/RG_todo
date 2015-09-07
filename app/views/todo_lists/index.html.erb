@@ -40,16 +40,7 @@
 <% end %>
 
 <div >
-<%= form_for([@todo_lists.build]) do |f|%>
-  <%= button_tag  do %>
-    <i class='fa fa-plus fa-2x' id='fa_plus'></i>
-  <% end %> 
-<% end %>
-  <% # 'Add TODO List', new_todo_list_path, id: :add_list do %>
-    <i class='fa fa-plus fa-2x' id='fa_plus'></i>
-  <% #end %> 
-<%= button_to "Add TODO List", todo_lists_path, id: "add_prj_btn",
-                method: :create, remote: true %>
-
+<%= button_to "Add TODO List", todo_lists_path, method: :create, remote: true %>
+    <!-- <i class='fa fa-plus fa-2x' id='fa_plus'></i> -->
 </div>
 
