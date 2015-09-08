@@ -29,10 +29,11 @@ Please feel free to use a different markup language if you do not plan to run
 
 
 1.
+```sql
 Select distinct status
 From tasks
 Order by status;
-
+```
 2.
 Select projects.name, Count(tasks.id) AS TasksCount
 From projects Left Join tasks on projects.id = tasks.project.id
