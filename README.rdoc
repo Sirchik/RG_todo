@@ -26,3 +26,49 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+1.
+Select distinct status
+From tasks
+Order by status;
+
+2.
+Select projects.name, Count(tasks.id) AS TasksCount
+From projects Left Join tasks on projects.id = tasks.project.id
+Group by projects.name
+Order by TasksCount Desc;
+
+3.
+Select projects.name, Count(tasks.id) AS TasksCount
+From projects Left Join tasks on projects.id = tasks.project.id
+Group by projects.name
+Order by projects.name;
+
+4.
+Select projects.name, tasks.name
+From projects Left Join tasks on projects.id = tasks.project.id
+Where projects.name like 'N*';
+
+5.
+Select projects.name, Count(tasks.id) AS TasksCount
+From projects Left Join tasks on projects.id = tasks.project.id
+Group by projects.name
+Having (projects.name like '?*a*?');
+
+6.
+Select name
+From tasks
+Group by name
+Having (Count(name) > 1)
+Order by name;
+
+7.
+
+
+8.
+Select projects.name
+From tasks Inner Join projects on tasks.project_id = projects.id
+Group by tasks.status, tasks.project_id, projects.name
+Having ((tasks.status='completed') AND (Count(tasks.id)>10))
+Order by tasks.project_id;
