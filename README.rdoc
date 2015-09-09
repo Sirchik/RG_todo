@@ -1,29 +1,29 @@
 SQL Tasks
 
 
-1. get all statuses, not repeating, alphabetically ordered
+1.get all statuses, not repeating, alphabetically ordered
   Select distinct status
   From tasks
   Order by status;
 
-2. get the count of all tasks in each project, order by tasks count descending
+2.get the count of all tasks in each project, order by tasks count descending
   Select projects.name, Count(tasks.id) AS TasksCount
   From projects Left Join tasks on projects.id = tasks.project.id
   Group by projects.name
   Order by TasksCount Desc;
 
-3. get the count of all tasks in each project, order by projects names
+3.get the count of all tasks in each project, order by projects names
   Select projects.name, Count(tasks.id) AS TasksCount
   From projects Left Join tasks on projects.id = tasks.project.id
   Group by projects.name
   Order by projects.name;
 
-4. get the tasks for all projects having the name beginning with “N” letter
+4.get the tasks for all projects having the name beginning with “N” letter
   Select projects.name, tasks.name
   From projects Left Join tasks on projects.id = tasks.project.id
   Where projects.name like 'N*';
 
-5. get the list of all projects containing the ‘a’ letter in the middle of the name, and show the tasks count near each project. Mention that there can exist projects without tasks and tasks with project_id=NULL
+5.get the list of all projects containing the ‘a’ letter in the middle of the name, and show the tasks count near each project. Mention that there can exist projects without tasks and tasks with project_id=NULL
   Select projects.name, Count(tasks.id) AS TasksCount
   From projects Left Join tasks on projects.id = tasks.project.id
   Group by projects.name
@@ -37,7 +37,7 @@ SQL Tasks
                   HAVING COUNT(*) > 1 )  AS E INNER JOIN tasks ON E.name = tasks.name
   ORDER BY tasks.name;
 
-7. get the list of tasks having several exact matches of both name and status, from the project ‘Garage’. Order by matches count
+7.get the list of tasks having several exact matches of both name and status, from the project ‘Garage’. Order by matches count
   SELECT tasks.*
   FROM ((SELECT name, status
                   FROM tasks
@@ -45,7 +45,7 @@ SQL Tasks
                   HAVING COUNT(*) > 1 )  AS E INNER JOIN tasks ON (E.status = tasks.status) AND (E.name = tasks.name))   INNER JOIN projects ON tasks.project_id = projects.id
   where (projects.name)='Garage';
 
-8. get the list of project names having more than 10 tasks in status ‘completed’. Order by project_id
+8.get the list of project names having more than 10 tasks in status ‘completed’. Order by project_id
   Select projects.name
   From tasks Inner Join projects on tasks.project_id = projects.id
   Group by tasks.status, tasks.project_id, projects.name
