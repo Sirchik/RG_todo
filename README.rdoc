@@ -30,14 +30,20 @@ Group by projects.name
 Having (projects.name like '?*a*?');
 
 6.
-Select name
-From tasks
-Group by name
-Having (Count(name) > 1)
-Order by name;
+SELECT tasks.*
+FROM (SELECT name
+                  FROM tasks
+                  GROUP BY name
+                  HAVING COUNT(*) > 1 )  AS E INNER JOIN tasks ON E.name = tasks.name
+ORDER BY tasks.name;
 
 7.
-
+SELECT tasks.*
+FROM ((SELECT name, status
+                  FROM tasks
+                  GROUP BY name, status
+                  HAVING COUNT(*) > 1 )  AS E INNER JOIN tasks ON (E.status = tasks.status) AND (E.name = tasks.name)) INNER JOIN projects ON tasks.project_id = projects.id
+where (projects.name)='Garage';
 
 8.
 Select projects.name
