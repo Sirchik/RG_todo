@@ -30,12 +30,12 @@ Group by projects.name
 Having (projects.name like '?*a*?');
 
 6.
-SELECT tasks.*
-FROM (SELECT name
+  SELECT tasks.*
+  FROM (SELECT name
                   FROM tasks
                   GROUP BY name
                   HAVING COUNT(*) > 1 )  AS E INNER JOIN tasks ON E.name = tasks.name
-ORDER BY tasks.name;
+  ORDER BY tasks.name;
 
 7.
 SELECT tasks.*
