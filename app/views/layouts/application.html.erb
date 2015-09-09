@@ -8,9 +8,40 @@
   <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
+<body>
 
-<header class="navbar">
-  <div class="navbar-inner">
+<!--   <header class="navbar navbar-default" role="navigation">
+    <div class="navbar-inner">
+      <nav class="collapse navbar-collapse navbar-ex1-collapse">
+        <% if user_signed_in? %>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'Account', edit_user_registration_path %></li>
+            <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+          </ul>
+        <% else %>
+          <ul class="nav navbar-nav pull-right">
+            <li><%= link_to 'Sign up', new_user_registration_path %></li>
+            <li><%= link_to 'Sign in', new_user_session_path %></li>
+          </ul>
+        <% end %>
+      </nav>
+    </div>
+  </header>
+ -->
+<div id="header">
+  <ul>
+    <div class="to_right">
+      <% if user_signed_in? %>
+        <li> <%= link_to "Sign out", destroy_user_session_path, method: :delete %> </li>
+      <% else %>
+        <li> <%= link_to "Register", new_user_registration_path %> </li>
+        <li> <%= link_to "Sign in", new_user_session_path %> </li>
+      <% end %>
+    </div>
+  </ul>
+</div>
+
+<!-- <header class="navbar">
   
       <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
@@ -24,13 +55,20 @@
         <% end %>
       </ul>
 
-  </div>
 </header>
+ -->
 
 
-<body>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
+<div id="main_page">
   <%= yield %>
+</div>
+
+  <div id="footer">
+    <p>&copyRubyGarage</p>
+  </div>
 
 </body>
 </html>

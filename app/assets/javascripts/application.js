@@ -27,6 +27,7 @@
 //   })
 // });
 
+
 $(function() {
   $('td[id^=todo_list_]').click(function () {
     $('#todo_list_1_items'.replace('1', $(this).attr('id').replace('todo_list_', ''))).toggle()
