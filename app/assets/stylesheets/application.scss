@@ -68,13 +68,22 @@ body {
   }
   .todo_list_title_table {
     width: 100%;
-    .td_right {
-      text-align: right;
-      color: $gray;
+    .list_icon {
+      width: 10%;
+      float: left;
+/*      text-align: center;
+      border-right: 1px solid $task_border;
+      padding: 1em 0;
+*/    }
+    .action_buttons {
+      width: 15%;
+      float: left;
+      text-align: center;
       A {
         text-decoration: none;
       }
-    };  
+      /*color: $gray;*/
+    };
     padding: 10px;
     text-align: center;
     font-weight: 700;
@@ -90,7 +99,8 @@ body {
     background: linear-gradient($blue-top, $blue-bot); /* Standard syntax */
     .td_title {
       cursor: pointer;
-      width: 80%;
+      width: 75%;
+      float: left;
       text-align: left;
       input {
         color: white;
@@ -117,6 +127,7 @@ body {
         padding: 1em 0;
       }
       .todo_item {
+        cursor: pointer;
         width: 80%;
         float: left;
         p {
@@ -126,7 +137,7 @@ body {
           font-weight: 100;
         }
       }
-      .trash {
+      .action_buttons {
         width: 10%;
         float: left;
         color: $task_border;
