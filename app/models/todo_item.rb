@@ -4,4 +4,9 @@ class TodoItem < ActiveRecord::Base
   def completed?
     !completed_at.blank?
   end
+
+  def last?
+    # byebug
+    todo_list.todo_items.last==self
+  end
 end

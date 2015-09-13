@@ -5,6 +5,7 @@ class TodoItemsController < ApplicationController
   def create
     @todo_item = @todo_list.todo_items.create(todo_item_params)
     redirect_to root_url
+    # render @todo_item
   end
 
   def destroy

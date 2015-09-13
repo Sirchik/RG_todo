@@ -1,5 +1,6 @@
-<div class="row clearfix">
-  <% unless todo_item.id.nil? %>
+<% unless todo_item.id.nil? %>
+  <% #byebug %>
+  <div class="row clearfix <%=' radius-bottom' if todo_item.last? %>" >
     <% if todo_item.completed? %>
       <div class="complete">
         <%= link_to complete_todo_list_todo_item_path(todo_item.todo_list_id, todo_item.id), method: :patch do %>
@@ -13,7 +14,7 @@
         <%= link_to '' do %>
           <i class='fa fa-sort'></i>
         <% end %> | 
-        <%= link_to '' do %>
+        <%= link_to '', class: 'todo_item_edit' do %>
           <i class='fa fa-pencil'></i>
         <% end %> | 
         <%= link_to todo_list_todo_item_path(todo_item.todo_list_id, todo_item.id), method: :delete, data: { confirm: 'Are you sure?'} do %>
@@ -41,5 +42,5 @@
         <% end %>
       </div>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>

@@ -4,43 +4,30 @@
 <% @todo_lists.each do |todo_list| %>
   <% # byebug %>
   <div class="container" >
-    <div class="row clearfix todo_list_title_table">
-<!--     <table class="todo_list_title_table">
-      <tr class="row">
-        <td>
- --> 
-        <div class="list_icon">
-          <i class='fa fa-calendar'></i>
-        </div>
-<!--         </td>
-        <td class="td_title" id=<%= 'todo_list_' + todo_list.id.to_s %> >
- --> 
-        <div class="td_title" id=<%= 'todo_list_' + todo_list.id.to_s %> >
-          <%= form_for(todo_list) do |f| %>
-            <%= f.label "#{todo_list.title}" %>
-            <%= f.text_field :title %>
-          <% end %>
-        </div>
-<!--         </td>
-        <td class="td_right">
- --> 
-          <div class="action_buttons">
-            <%= link_to '', class: 'todo_list_edit' do %>
-              <i class='fa fa-pencil'></i>
-            <% end %> | 
-            <%= link_to todo_list_path(todo_list), method: :delete, data: { confirm: 'Are you sure?'} do %>
-              <i class='fa fa-trash'></i>
-            <% end %>
-          </div>
-<!--         </td>
-      </tr>
-    </table>
- --> 
+    <div class="row clearfix todo_list_title">
+      <div class="list_icon">
+        <i class='fa fa-calendar'></i>
+      </div>
+      <div class="td_title" id=<%= 'todo_list_' + todo_list.id.to_s %> >
+        <%= form_for(todo_list) do |f| %>
+          <%= f.label "#{todo_list.title}" %>
+          <%= f.text_field :title, class: 'input_title' %>
+        <% end %>
+      </div>
+      <div class="action_buttons">
+        <%= link_to '', class: 'todo_list_edit' do %>
+          <i class='fa fa-pencil'></i>
+        <% end %> | 
+        <%= link_to todo_list_path(todo_list), method: :delete, data: { confirm: 'Are you sure?'} do %>
+          <i class='fa fa-trash'></i>
+        <% end %>
+      </div>
     </div>  
-    <div class="todo_items_wrapper" id=<%= 'todo_list_' + todo_list.id.to_s + '_items' %>>
-      <div id="form">
+    <div class="todo_items_wrapper radius-bottom" id=<%= 'todo_list_' + todo_list.id.to_s + '_items' %>>
+      <div id="form" class=<%= 'radius-bottom' if todo_list.todo_items.empty? %>>
         <%= render 'todo_items/form', :todo_list => todo_list%>
       </div>
+      <% todo_list.todo_items(1) %>
       <%= render todo_list.todo_items %>
     </div>  
   </div>

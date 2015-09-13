@@ -27,21 +27,24 @@
 //   })
 // });
 
+const KEY_CODE_ESC = 27;
 
 $(function() {
   $('div[id^=todo_list_]').click(function () {
     $('#todo_list_1_items'.replace('1', $(this).attr('id').replace('todo_list_', ''))).toggle()
-  })
+  });
   $('.todo_list_edit').click(function() {
-    $(this).parents('tr').first().find('label').hide();
-    $(this).parents('tr').first().find('#todo_list_title').show();
-    $(this).parents('tr').first().find('#todo_list_title').focus();
+    var title_form = $(this).parents('div').parents('div').children('.td_title').children('.edit_todo_list');
+    var title_input = title_form.children('.input_title');
+    title_form.children('label').hide();
+    title_input.show();
+    title_input.focus();
 
-    $(this).parents('tr').first().find('#todo_list_title').click(function(){
+    title_input.click(function(){
       return false;
     });
     return false;
-  })
+  });
   $('.row').hover(
     function() {
       $(this).find('.action_buttons').show();
@@ -53,21 +56,17 @@ $(function() {
   $(document).find('.action_buttons').hide();
 });
 
-$(document).click(function() {
+function edit_cancel() {
   $(document).find('.td_title').children().find('#todo_list_title').hide();
   $(document).find('.td_title').children().find('label').show();
+};
+
+$(document).click(function() {
+  edit_cancel();
+});
+
+$(document).keyup(function(event){
+  if(event.keyCode === KEY_CODE_ESC){
+    edit_cancel();
+  }
 })
-
-
-// $(document).on('click', '.prj_edit_btn', function(){
-//   $(this).parents('tr').first().find('label').hide();
-//   $(this).parents('tr').first().find('#project_name').show();
-//   $(this).parents('tr').first().find('#project_name').focus();
-
-//   // TODO: Handler is addded every time it clicks
-//   // Process click inside project name form to prevent it's hidding
-//   $(this).parents('tr').first().find('#project_name').click(function(){
-//     return false;
-//   });
-//   return false;
-// })

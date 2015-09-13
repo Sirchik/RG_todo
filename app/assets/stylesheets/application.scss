@@ -19,8 +19,8 @@
 */
  $white_opaque: rgba(250, 250, 250, .3);
  $dark: #1F7972;
- $task_border: #1F7972;
- $gray: #989898;
+ $task_border: #E7EBEA;
+ $gray: #999999;
 
 * {
   box-sizing: border-box;
@@ -31,11 +31,11 @@ html {
 
 body {
   height: 100%;
-  background: -webkit-linear-gradient(40deg, #4CB8C4 10%, #EAECC6 100%);
-  background:    -moz-linear-gradient(40deg, #4CB8C4 10%, #EAECC6 100%);
-  background:     -ms-linear-gradient(40deg, #4CB8C4 10%, #EAECC6 100%);
-  background:      -o-linear-gradient(40deg, #4CB8C4 10%, #EAECC6 100%);
-  background:         linear-gradient(40deg, #4CB8C4 10%, #EAECC6 100%);
+  background: -webkit-linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
+  background:    -moz-linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
+  background:     -ms-linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
+  background:      -o-linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
+  background:         linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
   font-family: 'Lato', sans-serif;
 }
 
@@ -62,37 +62,34 @@ body {
   max-width: 750px;
   background: white;
   margin: 3em auto 0 auto;
-  border-radius: 7px;
-  i {
-    color: $gray;
-  }
-  .todo_list_title_table {
+  /*border-radius: 7px;*/
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  .todo_list_title {
     width: 100%;
     .list_icon {
+      color: $gray;
       width: 10%;
       float: left;
-/*      text-align: center;
-      border-right: 1px solid $task_border;
-      padding: 1em 0;
-*/    }
+    }
     .action_buttons {
       width: 15%;
       float: left;
       text-align: center;
+      color: #98B0D2;
       A {
+        color: #98B0D2;
         text-decoration: none;
       }
-      /*color: $gray;*/
     };
     padding: 10px;
     text-align: center;
     font-weight: 700;
     font-size: 2rem;
-    /*text-transform: uppercase;*/
     color: white;
     margin: 0;
-    $blue-top: #5080BF;
-    $blue-bot: #33609B;
+    $blue-top: #5183BE;
+    $blue-bot: #375D9E;
     background: -webkit-linear-gradient($blue-top, $blue-bot); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(r$blue-top, $blue-bot); /*For Opera 11.1 to 12.0*/
     background: -moz-linear-gradient($blue-top, $blue-bot); /* For Firefox 3.6 to 15 */
@@ -104,7 +101,6 @@ body {
       text-align: left;
       input {
         color: white;
-        /*height: 40px;*/
         background-color: transparent;
         font-weight: 700;
         font-size: 2rem;
@@ -114,33 +110,47 @@ body {
     };
   };
   .todo_items_wrapper {
+    border: 1px solid $task_border;
+/*    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  radius-bottom {
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+    };*/
     .row {
+      i {
+        color: $gray;
+      }
       width: 100%;
       border-top: 1px solid $task_border;
-      border-bottom: 1px solid $task_border;
+      /*border-bottom: 1px solid $task_border;*/
       margin: auto;
       .complete {
-        width: 10%;
+        width: 7%;
         float: left;
         text-align: center;
-        border-right: 1px solid $task_border;
+        border-right: 1px solid #EFDADF;
         padding: 1em 0;
+        /*margin: 0px 5px 0px 0px;*/
+        margin-right: 5px;
       }
       .todo_item {
         cursor: pointer;
-        width: 80%;
+        width: 76%;
         float: left;
+        border-left: 1px solid #BCD0E8;
+        border-right: 1px solid $task_border;
         p {
           margin: 0;
           padding: 1em;
-          color: $task_border;
+          color: $gray;
           font-weight: 100;
         }
       }
       .action_buttons {
-        width: 10%;
+        width: 16%;
         float: left;
-        color: $task_border;
+        color: $gray;
         text-align: center;
         border-left: 1px solid $task_border;
         padding: 1em 0;
@@ -149,36 +159,50 @@ body {
         }
       }
       i {
-        color: #EFDADF;
+        color: $gray;
         transition: all .4s ease-in-out;
         &:hover {
           color: $dark;
         }
       }
+      &:hover {
+        background: #FCFED5;
+      }
     }
     #form {
-      background: #C3C3C3;
+      background: #CCCCCC;
       padding: 1%;
-      #fa_plus {
-        color: green;
+      .fa-plus {
+        color: #5A9172;
+        text-shadow: 0px -2px 1px rgb(0, 0, 0);
+        padding: 6px;
       }
       button {
-        height: 40px;
+        /*height: 40px;*/
+        float: left;
+        width: 8%;
         border: none;
         background: transparent;
       }
       input[type="text"] {
         width: 77%;
+        float: left;
         display: inline-block;
         outline: none;
         background: white;
         border: none;
         height: 40px;
-        border-radius: 4px;
+        border-radius: 4px 0px 0px 4px;
         padding: 0em 2em;
       }
       input[type="submit"] {
-        background: green;
+        /*background: #418B65;*/
+        $green-top: #96CDB0;
+        $green-bot: #4D8464;
+        background: -webkit-linear-gradient($green-top, $green-bot); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient($green-top, $green-bot); /*For Opera 11.1 to 12.0*/
+        background: -moz-linear-gradient($green-top, $green-bot); /* For Firefox 3.6 to 15 */
+        background: linear-gradient($green-top, $green-bot); /* Standard syntax */
         /*outline: none;*/
         border: none;
         height: 40px;
@@ -271,16 +295,6 @@ body {
   text-align: center;
 }
 
-body {
-  height: 100%;
-  background: -webkit-linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
-  background:    -moz-linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
-  background:     -ms-linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
-  background:      -o-linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
-  background:         linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
-  font-family: 'Lato', sans-serif;
-}
-
 #header {
   width: 100%;
   margin-left: auto;
@@ -309,3 +323,8 @@ body {
 .to_right {
   float: right;
 }
+
+.radius-bottom {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+};
