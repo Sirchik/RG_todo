@@ -30,10 +30,9 @@
 const KEY_CODE_ENTER = 13;
 const KEY_CODE_ESC = 27;
 
-$(function() {
+$(document).on("page:update", function() {
   $('div[id^=todo_list_]').click(function () {
     $('#todo_list_1_items'.replace('1', $(this).attr('id').replace('todo_list_', ''))).toggle()
-    // $('#todo_list_1_items'.replace('1', $(this).attr('id').replace('todo_list_', ''))).html("j render partial: 'todo_items/todo_item', locals: {todo_item: @todo_item}" );
   });
   $('.todo_list_edit').click(function() {
     var title_form = $(this).parents('div').parents('div').children('.td_title').children('.edit_todo_list');
@@ -65,6 +64,8 @@ $(function() {
       }
     }
   })
+  // $(".notice").html("");
+  // $(".alert").html("");
 });
 
 function edit_cancel() {
@@ -72,9 +73,9 @@ function edit_cancel() {
   $(document).find('.td_title').children().find('label').show();
 };
 
-$(document).ready(function() {
-  $(document).find('.todo_items_wrapper').hide();
-});
+// $(document).ready(function() {
+//   $(document).find('.todo_items_wrapper').hide();
+// });
 
 $(document).click(function() {
   edit_cancel();

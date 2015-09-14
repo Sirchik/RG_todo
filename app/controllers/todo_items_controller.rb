@@ -9,7 +9,13 @@ class TodoItemsController < ApplicationController
     @todo_item.content = params[:todo_item][:content]
     @todo_item.todo_list_id = params[:todo_list_id]
     @todo_item.save!
+    if @todo_item.errors.empty?
+      flash[:success] = 'Todo List item was created.'
+    else
+      flash[:error] = 'Todo List item could not be created.'
+    end
 
+    # byebug
     @todo_list = TodoList.find(@todo_item.todo_list_id)
     respond_with @todo_item do |format|
       format.js { render 'todo_lists/update', :todo_list => @todo_list}

@@ -1,2 +1,10 @@
 <% #byebug %>
 $("<%= '#todo_list_' + @todo_list.id.to_s + '_items'%>").children('.items_list').html("<%= j render partial: @todo_list.todo_items %>" );
+<% unless flash[:error] == nil %>
+  $(".alert").html("<%= flash[:error] %>" );
+  setTimeout('$(".alert").html("")', 3000)
+<% end %>
+<% unless flash[:success] == nil %>
+  $(".notice").html("<%= flash[:success] %>" );
+  setTimeout('$(".notice").html("")', 3000)
+<% end %>
