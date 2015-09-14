@@ -1,5 +1,5 @@
 <% # byebug %>
-<%= form_for([todo_list, todo_list.todo_items.build]) do |f|%>
+<%= form_for([todo_list, todo_list.todo_items.build], remote: true) do |f|%>
   <%= button_tag  do %>
     <i class='fa fa-plus fa-2x'></i>
   <% end %> 

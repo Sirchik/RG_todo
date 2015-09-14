@@ -31,7 +31,7 @@ class TodoListsController < ApplicationController
     @todo_list = TodoList.create(title: "New Project", user_id:  current_user.id)
     respond_to do |format|
       format.html { redirect_to root_url, notice: 'Todo list was successfully created.' }
-      format.json { }
+      # format.js { render 'todo_lists/update', :todo_list => @todo_list}
     end
   end
 

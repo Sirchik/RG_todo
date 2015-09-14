@@ -28,14 +28,16 @@
         <%= render 'todo_items/form', :todo_list => todo_list%>
       </div>
       <% todo_list.todo_items(1) %>
-      <%= render todo_list.todo_items %>
+      <div class="items_list">
+        <%= render todo_list.todo_items%>
+      </div>
     </div>  
   </div>
 
 <% end %>
 
 <div >
-<%= button_to "Add TODO List", todo_lists_path, method: :create, remote: true %>
+<%= button_to "Add TODO List", todo_lists_path, method: :create, remote: true, id: 'add_list' %>
     <!-- <i class='fa fa-plus fa-2x' id='fa_plus'></i> -->
 </div>
 

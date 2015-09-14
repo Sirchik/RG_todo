@@ -1,0 +1,1 @@
+$("<%= '#todo_list_' + @todo_list.id.to_s + '_items'%>").children('.items_list').html("<%= j render partial: @todo_list.todo_items %>" );
